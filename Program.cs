@@ -1,4 +1,4 @@
-using Model;
+using DotQuest.IO;
 
 namespace DotQuest
 {
@@ -6,18 +6,17 @@ namespace DotQuest
     {
         public static void Main(string[] args)
         {
-            var o1 = new QuestionOption(false, "Se debe ceder el paso a los vehículos que circulen por la izquierda.");
-            var o2 = new QuestionOption(true, "Se debe ceder el paso a los vehículos que circulen por la derecha.");
-            var o3 = new QuestionOption(false, "No es necesario ceder el paso a ningún vehículo.");
+            if (args.Length < 1)
+            {
+                throw new Exception("Se requiere un archivo de preguntas de entrada.");
+            }
 
-            var q = new Question("En una intersección sin señalización expresa, ¿qué norma general se aplica respecto a la preferencia de paso?", [o1, o2, o3]);
+            var l = FileQuestion.Import(args[0]);
 
-            Console.Write(q);
-            Console.Write(q.ToStringWithCorrect());
-            q.Mark(2);
-            Console.Write(q);
-            Console.Write(q.ToStringWithCorrect());
-
+            foreach (var q in l)
+            {
+                Console.WriteLine(q.ToStringWithCorrect());
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Model
+namespace DotQuest.Model
 {
     public class QuestionOption
     {
