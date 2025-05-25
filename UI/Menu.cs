@@ -13,6 +13,7 @@ namespace DotQuest.UI
             OriginalListQuestion = ListQuestion = listQuestion;
             CurrentQuestionIndex = 0;
             Init();
+            Render();
         }
 
         public void Next()
