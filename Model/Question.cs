@@ -41,10 +41,15 @@ namespace DotQuest.Model
             ListOptions = RandomSort.Sort<QuestionOption>(list_options);
         }
 
-        public void Mark(int i)
+        public bool Mark(int i)
         {
             if (0 <= i && i <= ListOptions.Count())
+            {
                 ListOptions[i].Mark();
+                return true;
+            }
+
+            return false;
         }
 
         public bool Solve()
