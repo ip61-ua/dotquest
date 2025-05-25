@@ -53,6 +53,17 @@ namespace Model
                 ListOptions[i].Mark();
         }
 
+        public bool Solve()
+        {
+            for (int i = 0; i < ListOptions.Count(); i++)
+            {
+                if (ListOptions[i].Correct != ListOptions[i].Selected)
+                    return false;
+            }
+
+            return true;
+        }
+
         public override string ToString()
         {
             string result = QuestionText;
