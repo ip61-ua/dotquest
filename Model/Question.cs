@@ -4,13 +4,9 @@ namespace DotQuest.Model
 {
     public class QuestionOption
     {
-        private bool correct = false;
-        private bool selected = false;
-        private string option_text = "<No option>";
-
-        public bool Correct { get => correct; private set => correct = value; }
-        public bool Selected { get => selected; protected set => selected = value; }
-        public string OptionText { get => option_text; private set => option_text = value; }
+        public bool Correct { get; private set; } = false;
+        public bool Selected { get; protected set; } = false;
+        public string OptionText { get; private set; } = "<No option>";
 
         public QuestionOption(bool correct, string option_text)
         {
@@ -36,11 +32,8 @@ namespace DotQuest.Model
 
     public class Question
     {
-        private string question_text = "<No question text>";
-        private List<QuestionOption> list_options = [];
-
-        public string QuestionText { get => question_text; private set => question_text = value; }
-        public List<QuestionOption> ListOptions { get => list_options; private set => list_options = value; }
+        public string QuestionText { get; set; } = "<No question text>";
+        public List<QuestionOption> ListOptions { get; private set; } = [];
 
         public Question(string question_text, List<QuestionOption> list_options)
         {
