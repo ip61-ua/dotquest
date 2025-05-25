@@ -1,3 +1,5 @@
+using DotQuest.Utils;
+
 namespace DotQuest.Model
 {
     public class QuestionOption
@@ -43,8 +45,7 @@ namespace DotQuest.Model
         public Question(string question_text, List<QuestionOption> list_options)
         {
             QuestionText = question_text;
-            Random rng = new Random();
-            ListOptions = list_options.OrderBy(x => rng.Next()).ToList();
+            ListOptions = RandomSort.Sort<QuestionOption>(list_options);
         }
 
         public void Mark(int i)
