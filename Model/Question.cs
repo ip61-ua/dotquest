@@ -28,7 +28,7 @@ namespace Model
 
         public string ToStringWithCorrect()
         {
-            return $"{(Correct ? "✅" : "❌")} {OptionText.ToString()}";
+            return $"{(Correct ? "✅" : "❌")} {ToString()}";
         }
     }
 
