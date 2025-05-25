@@ -41,9 +41,12 @@ namespace DotQuest.Model
             ListOptions = RandomSort.Sort<QuestionOption>(list_options);
         }
 
+        public bool IsValidOption(int i) => 0 <= i && i <= ListOptions.Count();
+
+
         public bool Mark(int i)
         {
-            if (0 <= i && i <= ListOptions.Count())
+            if (IsValidOption(i))
             {
                 ListOptions[i].Mark();
                 return true;

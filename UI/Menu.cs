@@ -16,15 +16,19 @@ namespace DotQuest.UI
             Render();
         }
 
+        public bool Contains(int i) => 0 <= i && i <= ListQuestion.Count();
+
         public void Next()
         {
-            CurrentQuestionIndex++;
+            if (!Contains(++CurrentQuestionIndex))
+                CurrentQuestionIndex--;
             Render();
         }
 
         public void Prev()
         {
-            CurrentQuestionIndex--;
+            if (!Contains(--CurrentQuestionIndex))
+                CurrentQuestionIndex++;
             Render();
         }
 
