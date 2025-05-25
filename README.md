@@ -2,23 +2,23 @@
 
 Mini aplicación para hacer test sin conexión a internet.
 
-# Requisitos
+## Requisitos
 
 - `dotnet`.
 - Un ordenador con CUALQUIER sistema operativo donde puedas instalar .NET.
 
-# Ejecutar
+## Ejecutar
 
 ``` bash
 dotquest <file>
 ```
 
-# Compilar
+## Compilar
 
 ``` bash
 dotnet build
 ```
 
-# Dependencias
+## Dependencias
 
 NINGUNA
