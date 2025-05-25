@@ -46,9 +46,9 @@ namespace DotQuest.Model
 
         public bool Mark(int i)
         {
-            if (IsValidOption(i))
+            if (IsValidOption(i - 1))
             {
-                ListOptions[i].Mark();
+                ListOptions[i - 1].Mark();
                 return true;
             }
 
@@ -71,7 +71,7 @@ namespace DotQuest.Model
             string result = QuestionText;
 
             for (int i = 0; i < ListOptions.Count(); i++)
-                result += "\n " + i + ". " + ListOptions[i].ToString();
+                result += "\n " + (i + 1) + ". " + ListOptions[i].ToString();
 
             return result + "\n";
         }
@@ -81,7 +81,7 @@ namespace DotQuest.Model
             string result = QuestionText;
 
             for (int i = 0; i < ListOptions.Count(); i++)
-                result += "\n " + i + ". " + ListOptions[i].ToStringWithCorrect();
+                result += "\n " + (i + 1) + ". " + ListOptions[i].ToStringWithCorrect();
 
             return result + "\n";
         }
