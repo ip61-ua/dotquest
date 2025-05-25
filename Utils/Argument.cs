@@ -8,6 +8,8 @@ namespace DotQuest.Utils
         {
             if (args.Length < 1)
                 throw new Exception("Se requiere un archivo de preguntas de entrada.");
+
+            FileSource = args[0];
         }
     }
 }
