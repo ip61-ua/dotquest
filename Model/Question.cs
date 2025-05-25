@@ -7,7 +7,7 @@ namespace Model
         private string option_text = "<No option>";
 
         public bool Correct { get => correct; private set => correct = value; }
-        public bool Selected { get => selected; set => selected = value; }
+        public bool Selected { get => selected; protected set => selected = value; }
         public string OptionText { get => option_text; private set => option_text = value; }
 
         public QuestionOption(bool correct, string option_text)
@@ -16,9 +16,14 @@ namespace Model
             Correct = correct;
         }
 
+        public void Mark()
+        {
+            Selected = Selected ? false : true;
+        }
+
         public override string ToString()
         {
-            return $"{OptionText}";
+            return $"{(Selected ? "*" : "")}{OptionText}";
         }
 
         public string ToStringWithCorrect()
@@ -42,14 +47,31 @@ namespace Model
             ListOptions = list_options.OrderBy(x => rng.Next()).ToList();
         }
 
+        public void Mark(int i)
+        {
+            if (0 <= i && i <= ListOptions.Count())
+                ListOptions[i].Mark();
+        }
+
         public override string ToString()
         {
             string result = QuestionText;
 
             for (int i = 0; i < ListOptions.Count(); i++)
-                result += "\n" + ListOptions[i].ToString();
+                result += "\n " + i + ". " + ListOptions[i].ToString();
 
-            return result;
+            return result + "\n";
         }
+
+        public string ToStringWithCorrect()
+        {
+            string result = QuestionText;
+
+            for (int i = 0; i < ListOptions.Count(); i++)
+                result += "\n " + i + ". " + ListOptions[i].ToStringWithCorrect();
+
+            return result + "\n";
+        }
+
     }
 }
