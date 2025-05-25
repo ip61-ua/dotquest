@@ -1,4 +1,6 @@
+using DotQuest.Utils;
 using DotQuest.IO;
+using DotQuest.UI;
 
 namespace DotQuest
 {
@@ -6,19 +8,8 @@ namespace DotQuest
     {
         public static void Main(string[] args)
         {
-            if (args.Length < 1)
-            {
-                throw new Exception("Se requiere un archivo de preguntas de entrada.");
-            }
-
-
-            var l = FileQuestion.Import(args[0]);
-
-            foreach (var q in l)
-            {
-                Console.WriteLine(q.ToStringWithCorrect());
-            }
-
+            ProgramArguments.Parse(args);
+            Menu.launch(FileQuestion.Import(ProgramArguments.FileSource));
         }
     }
 }
