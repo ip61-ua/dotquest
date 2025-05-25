@@ -1,4 +1,5 @@
 using DotQuest.Model;
+using DotQuest.Utils;
 
 namespace DotQuest.IO
 {
@@ -50,7 +51,7 @@ namespace DotQuest.IO
 
         public static List<Question> Import(string srcFile)
         {
-            return Parse(File.ReadAllText(srcFile));
+            return RandomSort.Sort<Question>(Parse(File.ReadAllText(srcFile)));
         }
     }
 }

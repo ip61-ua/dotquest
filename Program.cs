@@ -11,12 +11,14 @@ namespace DotQuest
                 throw new Exception("Se requiere un archivo de preguntas de entrada.");
             }
 
+
             var l = FileQuestion.Import(args[0]);
 
             foreach (var q in l)
             {
                 Console.WriteLine(q.ToStringWithCorrect());
             }
+
         }
     }
 }
