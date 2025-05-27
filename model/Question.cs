@@ -32,13 +32,16 @@ namespace DotQuest.Model
 
     public class Question
     {
+        public readonly int Id;
+        public bool AlreadySolved { get; private set; } = false;
         public string QuestionText { get; set; } = "<No question text>";
         public List<QuestionOption> ListOptions { get; private set; } = [];
 
-        public Question(string question_text, List<QuestionOption> list_options)
+        public Question(string question_text, List<QuestionOption> list_options, int id = -1)
         {
             QuestionText = question_text;
             ListOptions = RandomSort.Sort<QuestionOption>(list_options);
+            Id = id;
         }
 
         public bool IsValidOption(int i) => 0 <= i && i <= ListOptions.Count();
@@ -57,6 +60,7 @@ namespace DotQuest.Model
 
         public bool Solve()
         {
+            AlreadySolved = true;
             for (int i = 0; i < ListOptions.Count(); i++)
             {
                 if (ListOptions[i].Correct != ListOptions[i].Selected)
@@ -68,6 +72,8 @@ namespace DotQuest.Model
 
         public override string ToString()
         {
+            if (AlreadySolved) return ToStringWithCorrect();
+
             string result = QuestionText;
 
             for (int i = 0; i < ListOptions.Count(); i++)
