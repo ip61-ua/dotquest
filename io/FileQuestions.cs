@@ -36,8 +36,11 @@ namespace DotQuest.IO
                 else if (lines[i] == "" || i + 1 == lines.Length)
                 {
                     result
-                      .Add(new Question(InternalCounter.CurrentQuestionStr,
-                        InternalCounter.CurrentCurrentOptions));
+                      .Add(new Question(
+                        InternalCounter.CurrentQuestionStr,
+                        InternalCounter.CurrentCurrentOptions,
+                        i
+                      ));
                     InternalCounter.Reset();
                 }
                 else

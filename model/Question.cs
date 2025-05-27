@@ -21,7 +21,7 @@ namespace DotQuest.Model
 
         public override string ToString()
         {
-            return $"{(Selected ? "*" : "")}{OptionText}";
+            return $"{(Selected ? "➡️ " : "")}{OptionText}";
         }
 
         public string ToStringWithCorrect()
@@ -70,11 +70,14 @@ namespace DotQuest.Model
             return true;
         }
 
+        private string HeaderQuestionToString() =>
+            (AlreadySolved ? "⭐" : "") + Id + " | " + QuestionText;
+
         public override string ToString()
         {
             if (AlreadySolved) return ToStringWithCorrect();
 
-            string result = QuestionText;
+            string result = HeaderQuestionToString();
 
             for (int i = 0; i < ListOptions.Count(); i++)
                 result += "\n " + (i + 1) + ". " + ListOptions[i].ToString();
@@ -84,7 +87,7 @@ namespace DotQuest.Model
 
         public string ToStringWithCorrect()
         {
-            string result = QuestionText;
+            string result = HeaderQuestionToString();
 
             for (int i = 0; i < ListOptions.Count(); i++)
                 result += "\n " + (i + 1) + ". " + ListOptions[i].ToStringWithCorrect();
