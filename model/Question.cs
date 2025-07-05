@@ -10,7 +10,8 @@ namespace DotQuest.Model
 
         public QuestionOption(bool correct, string option_text)
         {
-            OptionText = option_text;
+            //OptionText = option_text;
+            OptionText = Question.ParseStr(option_text);
             Correct = correct;
         }
 
@@ -37,9 +38,17 @@ namespace DotQuest.Model
         public string QuestionText { get; set; } = "<No question text>";
         public List<QuestionOption> ListOptions { get; private set; } = [];
 
+        public static string ParseStr(string result)
+        {
+            return result
+              .Replace("\\n", "\n")
+              .Replace("```", "\n```")
+              .Replace("\\t", "\t");
+        }
+
         public Question(string question_text, List<QuestionOption> list_options, int id = -1)
         {
-            QuestionText = question_text;
+            QuestionText = ParseStr(question_text);
             ListOptions = RandomSort.Sort<QuestionOption>(list_options);
             Id = id;
         }

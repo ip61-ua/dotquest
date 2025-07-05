@@ -33,7 +33,7 @@ namespace DotQuest.IO
                     InternalCounter.CurrentQuestionStr = lines[i];
                 else if (InternalCounter.IsUndefinedIndex())
                     InternalCounter.CurrentCorrectIndex = int.Parse(lines[i]) + i;
-                else if (lines[i] == "" || i + 1 == lines.Length)
+                else if (lines[i] == "" || string.IsNullOrWhiteSpace(lines[i]) || i + 1 == lines.Length)
                 {
                     result
                       .Add(new Question(
